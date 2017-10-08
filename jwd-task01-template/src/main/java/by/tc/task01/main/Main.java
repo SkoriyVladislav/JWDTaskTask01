@@ -71,7 +71,6 @@ public class Main {
 
 		PrintApplianceInfo.print(appliance);
 
-
 		//////////////////////////////////////////////////////////////////
 
 		Criteria<Laptop> criteriaLaptop = new Criteria<Laptop>();
@@ -104,7 +103,6 @@ public class Main {
 		appliance = service.find(vacuumCleanerCriteria);
 
 		PrintApplianceInfo.print(appliance);
-
 	}
 
 }
