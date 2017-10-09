@@ -38,9 +38,14 @@ public class Validator {
 	private static <E> boolean validateCriteriaLaptop(Criteria<E> criteria) {
 		Map.Entry[] entries = criteria.getEntry();
 		for (int i = 0; i < entries.length; i++) {
+			if (entries[i].getValue() == null) {
+				return false;
+			}
+
 			if (SearchCriteria.Laptop.BATTERY_CAPACITY == entries[i].getKey() || SearchCriteria.Laptop.CPU == entries[i].getKey() ||
 					SearchCriteria.Laptop.DISPLAY_INCHS == entries[i].getKey() || SearchCriteria.Laptop.MEMORY_ROM == entries[i].getKey() ||
 					SearchCriteria.Laptop.SYSTEM_MEMORY == entries[i].getKey()) {
+
 				if (((Number)entries[i].getValue()).doubleValue() < 0) {
 					return false;
 				}
@@ -60,6 +65,10 @@ public class Validator {
 	private static <E> boolean validateCriteriaOven(Criteria<E> criteria) {
 		Map.Entry[] entries = criteria.getEntry();
 		for (int i = 0; i < entries.length; i++) {
+			if (entries[i].getValue() == null) {
+				return false;
+			}
+
 			if (SearchCriteria.Oven.POWER_CONSUMPTION == entries[i].getKey() || SearchCriteria.Oven.CAPACITY == entries[i].getKey()
 					|| SearchCriteria.Oven.DEPTH == entries[i].getKey() || SearchCriteria.Oven.HEIGHT == entries[i].getKey()
 					|| SearchCriteria.Oven.WEIGHT == entries[i].getKey() || SearchCriteria.Oven.WIDTH == entries[i].getKey()) {
@@ -76,6 +85,10 @@ public class Validator {
 	private static <E> boolean validateCriteriaRefrigerator(Criteria<E> criteria) {
 		Map.Entry[] entries = criteria.getEntry();
 		for (int i = 0; i < entries.length; i++) {
+			if (entries[i].getValue() == null) {
+				return false;
+			}
+
 			if (SearchCriteria.Refrigerator.POWER_CONSUMPTION == entries[i].getKey() || SearchCriteria.Refrigerator.FREEZER_CAPACITY == entries[i].getKey()
 					|| SearchCriteria.Refrigerator.OVERALL_CAPACITY == entries[i].getKey() || SearchCriteria.Refrigerator.HEIGHT == entries[i].getKey()
 					|| SearchCriteria.Refrigerator.WEIGHT == entries[i].getKey() || SearchCriteria.Refrigerator.WIDTH == entries[i].getKey()) {
@@ -93,6 +106,10 @@ public class Validator {
 	private static <E> boolean validateCriteriaSpeakers(Criteria<E> criteria) {
 		Map.Entry[] entries = criteria.getEntry();
 		for (int i = 0; i < entries.length; i++) {
+			if (entries[i].getValue() == null) {
+				return false;
+			}
+
 			if (SearchCriteria.Speakers.POWER_CONSUMPTION == entries[i].getKey() || SearchCriteria.Speakers.CORD_LENGTH == entries[i].getKey()
 					|| SearchCriteria.Speakers.FREQUENCY_RANGE == entries[i].getKey() || SearchCriteria.Speakers.NUMBER_OF_SPEAKERS == entries[i].getKey()) {
 				if ((((Number)entries[i].getValue()).doubleValue() < 0)) {
@@ -108,6 +125,10 @@ public class Validator {
 	private static <E> boolean validateCriteriaTabletPC(Criteria<E> criteria) {
 		Map.Entry[] entries = criteria.getEntry();
 		for (int i = 0; i < entries.length; i++) {
+			if (entries[i].getValue() == null) {
+				return false;
+			}
+
 			if (SearchCriteria.TabletPC.COLOR == entries[i].getKey()) {
 				if (!(entries[i].getValue() instanceof String)) {
 					return false;
@@ -128,6 +149,10 @@ public class Validator {
 	private static <E> boolean validateCriteriaVacuumCleaner(Criteria<E> criteria) {
 		Map.Entry[] entries = criteria.getEntry();
 		for (int i = 0; i < entries.length; i++) {
+			if (entries[i].getValue() == null) {
+				return false;
+			}
+
 			if (SearchCriteria.VacuumCleaner.POWER_CONSUMPTION == entries[i].getKey() || SearchCriteria.VacuumCleaner.BAG_TYPE == entries[i].getKey()
 					|| SearchCriteria.VacuumCleaner.CLEANING_WIDTH == entries[i].getKey() || SearchCriteria.VacuumCleaner.MOTOR_SPEED_REGULATION == entries[i].getKey()) {
 				if ((((Number)entries[i].getValue()).doubleValue() < 0)) {
