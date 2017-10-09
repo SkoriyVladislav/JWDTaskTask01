@@ -3,17 +3,17 @@ package by.tc.task01.entity;
 public class TabletPC extends Appliance{
 	// you may add your own code here
 
-    private double batteryCapacity, displayInches, memoryRom, flashMemoryCapacity;
+    private double batteryCapacity, displayInches, memoryROM, flashMemoryCapacity;
     private String color;
 
     public TabletPC() {
 
     }
 
-    public TabletPC(double batteryCapacity, double displayInches, double memoryRom, double flashMemoryCapacity, String color) {
+    public TabletPC(double batteryCapacity, double displayInches, double memoryROM, double flashMemoryCapacity, String color) {
         this.batteryCapacity = batteryCapacity;
         this.displayInches = displayInches;
-        this.memoryRom = memoryRom;
+        this.memoryROM = memoryROM;
         this.flashMemoryCapacity = flashMemoryCapacity;
         this.color = color;
     }
@@ -27,7 +27,7 @@ public class TabletPC extends Appliance{
 
         if (Double.compare(tabletPC.batteryCapacity, batteryCapacity) != 0) return false;
         if (Double.compare(tabletPC.displayInches, displayInches) != 0) return false;
-        if (Double.compare(tabletPC.memoryRom, memoryRom) != 0) return false;
+        if (Double.compare(tabletPC.memoryROM, memoryROM) != 0) return false;
         if (Double.compare(tabletPC.flashMemoryCapacity, flashMemoryCapacity) != 0) return false;
         return color != null ? color.equals(tabletPC.color) : tabletPC.color == null;
     }
@@ -40,7 +40,7 @@ public class TabletPC extends Appliance{
         result = (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(displayInches);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(memoryRom);
+        temp = Double.doubleToLongBits(memoryROM);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(flashMemoryCapacity);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
@@ -53,9 +53,49 @@ public class TabletPC extends Appliance{
         return "TabletPC{" +
                 "batteryCapacity=" + batteryCapacity +
                 ", displayInches=" + displayInches +
-                ", memoryRom=" + memoryRom +
+                ", memoryROM=" + memoryROM +
                 ", flashMemoryCapacity=" + flashMemoryCapacity +
                 ", color='" + color + '\'' +
                 '}';
+    }
+
+    public double getBatteryCapacity() {
+        return batteryCapacity;
+    }
+
+    public void setBatteryCapacity(double batteryCapacity) {
+        this.batteryCapacity = batteryCapacity;
+    }
+
+    public double getDisplayInches() {
+        return displayInches;
+    }
+
+    public void setDisplayInches(double displayInches) {
+        this.displayInches = displayInches;
+    }
+
+    public double getMemoryROM() {
+        return memoryROM;
+    }
+
+    public void setMemoryROM(double memoryROM) {
+        this.memoryROM = memoryROM;
+    }
+
+    public double getFlashMemoryCapacity() {
+        return flashMemoryCapacity;
+    }
+
+    public void setFlashMemoryCapacity(double flashMemoryCapacity) {
+        this.flashMemoryCapacity = flashMemoryCapacity;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }

@@ -53,4 +53,36 @@ public class Speakers extends Appliance{
                 ", cordLength=" + cordLength +
                 '}';
     }
+
+    public double getPowerConsumption() {
+        return powerConsumption;
+    }
+
+    public void setPowerConsumption(double powerConsumption) {
+        this.powerConsumption = powerConsumption;
+    }
+
+    public double getNumberOfSpeakers() {
+        return numberOfSpeakers;
+    }
+
+    public void setNumberOfSpeakers(double numberOfSpeakers) {
+        this.numberOfSpeakers = numberOfSpeakers;
+    }
+
+    public double getCordLength() {
+        return cordLength;
+    }
+
+    public void setCordLength(double cordLength) {
+        this.cordLength = cordLength;
+    }
+
+    public String getFrequencyRange() {
+        return frequencyRange;
+    }
+
+    public void setFrequencyRange(String frequencyRange) {
+        this.frequencyRange = frequencyRange;
+    }
 }

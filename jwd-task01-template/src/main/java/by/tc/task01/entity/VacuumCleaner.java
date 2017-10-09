@@ -61,4 +61,52 @@ public class VacuumCleaner extends Appliance{
                 ", wandType='" + wandType + '\'' +
                 '}';
     }
+
+    public double getPowerConsumption() {
+        return powerConsumption;
+    }
+
+    public void setPowerConsumption(double powerConsumption) {
+        this.powerConsumption = powerConsumption;
+    }
+
+    public double getMotorSpeedRegulation() {
+        return motorSpeedRegulation;
+    }
+
+    public void setMotorSpeedRegulation(double motorSpeedRegulation) {
+        this.motorSpeedRegulation = motorSpeedRegulation;
+    }
+
+    public double getCleaningWidth() {
+        return cleaningWidth;
+    }
+
+    public void setCleaningWidth(double cleaningWidth) {
+        this.cleaningWidth = cleaningWidth;
+    }
+
+    public String getFilterType() {
+        return filterType;
+    }
+
+    public void setFilterType(String filterType) {
+        this.filterType = filterType;
+    }
+
+    public String getBagType() {
+        return bagType;
+    }
+
+    public void setBagType(String bagType) {
+        this.bagType = bagType;
+    }
+
+    public String getWandType() {
+        return wandType;
+    }
+
+    public void setWandType(String wandType) {
+        this.wandType = wandType;
+    }
 }

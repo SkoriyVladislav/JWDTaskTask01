@@ -50,14 +50,11 @@ public class ApplianceDAOImpl implements ApplianceDAO{
 									}
 								}
 							}
-
 							else {
 								flag = false;
 								break;
 							}
 						}
-
-
 					}
 				}
 
@@ -79,7 +76,7 @@ public class ApplianceDAOImpl implements ApplianceDAO{
 	}
 	
 	// you may add your own code here
-	private <E> Appliance createAppleance(String line, String criteria) {
+	private Appliance createAppleance(String line, String criteria) {
 		Appliance appliance = null;
 		if (criteria.equals("Oven")) {
 			appliance = createOven(line);
