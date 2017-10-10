@@ -10,8 +10,7 @@ public class Validator {
 	public static <E> boolean criteriaValidator(Criteria<E> criteria) {
 		// you may add your own code here
 
-		validateCriteria(criteria);
-		return true;
+		return validateCriteria(criteria);
 	}
 
 	private static <E> boolean validateCriteria(Criteria<E> criteria) {
