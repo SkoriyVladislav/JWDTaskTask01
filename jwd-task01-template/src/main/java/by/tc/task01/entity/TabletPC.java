@@ -1,5 +1,8 @@
 package by.tc.task01.entity;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class TabletPC extends Appliance{
 	// you may add your own code here
 
@@ -16,6 +19,39 @@ public class TabletPC extends Appliance{
         this.memoryROM = memoryROM;
         this.flashMemoryCapacity = flashMemoryCapacity;
         this.color = color;
+    }
+
+    public static Appliance create(String line) {
+        Appliance appliance;
+
+        Pattern pat = Pattern.compile("BATTERY_CAPACITY=[0-9]+(.[0-9]+)?");
+        Matcher matcher = pat.matcher(line);
+        matcher.find();
+        double  batteryCapacity = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("DISPLAY_INCHES=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double displayInches = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("MEMORY_ROM=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double memoryRom = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("FLASH_MEMORY_CAPACITY=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double flashMemoryCapacity = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("COLOR=[a-z|A-Z]+(.[a-z|A-z]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        String color = matcher.group().substring("COLOR=".length());
+
+        appliance = new TabletPC(batteryCapacity, displayInches, memoryRom, flashMemoryCapacity, color);
+
+        return appliance;
     }
 
     @Override

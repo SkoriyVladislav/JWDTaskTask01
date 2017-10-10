@@ -1,5 +1,8 @@
 package by.tc.task01.entity;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Laptop extends Appliance{
 	// you may add your own code here
     private double batteryCapacity, memoryROM, systemMemory, CPU, displayInches;
@@ -17,6 +20,44 @@ public class Laptop extends Appliance{
         this.CPU = CPU;
         this.displayInches = displayInches;
         this.OS = OS;
+    }
+
+    public static Appliance create(String line) {
+        Appliance appliance;
+
+        Pattern pat = Pattern.compile("BATTERY_CAPACITY=[0-9]+(.[0-9]+)?");
+        Matcher matcher = pat.matcher(line);
+        matcher.find();
+        double  batteryCapacity= Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("MEMORY_ROM=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double memoryRom = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("SYSTEM_MEMORY=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double systemMemory = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("CPU=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double CPU = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("DISPLAY_INCHS=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double displayInchs = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("OS=[a-z|A-Z]+(.[a-z|A-z]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        String OS = matcher.group().substring(3);
+
+        appliance = new Laptop(batteryCapacity, memoryRom, systemMemory, CPU, displayInchs, OS);
+
+        return appliance;
     }
 
     @Override

@@ -1,5 +1,8 @@
 package by.tc.task01.entity;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Oven extends Appliance{
 	// you may add your own code here
     private double powerConsumption, weight, capacity, depth, height, width;
@@ -16,6 +19,44 @@ public class Oven extends Appliance{
         this.depth = depth;
         this.height = height;
         this.width = width;
+    }
+
+    public static Appliance create(String line) {
+        Appliance appliance;
+
+        Pattern pat = Pattern.compile("POWER_CONSUMPTION=[0-9]+(.[0-9]+)?");
+        Matcher matcher = pat.matcher(line);
+        matcher.find();
+        double powerConsumption = Double.valueOf(matcher.group().replaceAll("\\D+", " ").trim());
+
+        pat = Pattern.compile("WEIGHT=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double weight = Double.valueOf(matcher.group().replaceAll("\\D+", " ").trim());
+
+        pat = Pattern.compile("CAPACITY=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double capasity = Double.valueOf(matcher.group().replaceAll("\\D+", " ").trim());
+
+        pat = Pattern.compile("DEPTH=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double depth = Double.valueOf(matcher.group().replaceAll("\\D+", " ").trim());
+
+        pat = Pattern.compile("WIDTH=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double width = Double.valueOf(matcher.group().replaceAll("\\D+", " ").trim());
+
+        pat = Pattern.compile("HEIGHT=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double height = Double.valueOf(matcher.group().replaceAll("\\D+", " ").trim());
+
+        appliance = new Oven(powerConsumption, weight, capasity, depth, height, width);
+
+        return appliance;
     }
 
     @Override

@@ -1,5 +1,8 @@
 package by.tc.task01.entity;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Speakers extends Appliance{
 	// you may add your own code here
 
@@ -15,6 +18,34 @@ public class Speakers extends Appliance{
         this.numberOfSpeakers = numberOfSpeakers;
         this.frequencyRange = frequencyRange;
         this.cordLength = cordLength;
+    }
+
+    public static Appliance create(String line) {
+        Appliance appliance;
+
+        Pattern pat = Pattern.compile("POWER_CONSUMPTION=[0-9]+(.[0-9]+)?");
+        Matcher matcher = pat.matcher(line);
+        matcher.find();
+        double  powerConsumption = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("NUMBER_OF_SPEAKERS=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double numberOfSpeakers = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("FREQUENCY_RANGE=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        String frequencyRange = matcher.group().substring("FREQUENCY_RANGE=".length());
+
+        pat = Pattern.compile("CORD_LENGTH=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double cordLength = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        appliance = new Speakers(powerConsumption, numberOfSpeakers, frequencyRange, cordLength);
+
+        return appliance;
     }
 
     @Override

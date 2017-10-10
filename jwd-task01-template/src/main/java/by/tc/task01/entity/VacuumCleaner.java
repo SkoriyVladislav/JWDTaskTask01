@@ -1,5 +1,8 @@
 package by.tc.task01.entity;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class VacuumCleaner extends Appliance{
 	// you may add your own code here
 
@@ -17,6 +20,45 @@ public class VacuumCleaner extends Appliance{
         this.filterType = filterType;
         this.bagType = bagType;
         this.wandType = wandType;
+    }
+
+
+    public static Appliance create(String line){
+        Appliance appliance;
+
+        Pattern pat = Pattern.compile("POWER_CONSUMPTION=[0-9]+(.[0-9]+)?");
+        Matcher matcher = pat.matcher(line);
+        matcher.find();
+        double  powerConsumption = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("MOTOR_SPEED_REGULATION=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double motorSpeedRegulation = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("CLEANING_WIDTH=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double cleaningWidth = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("FILTER_TYPE=[a-z|A-Z]+(.[a-z|A-z]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        String filterType = matcher.group().substring("FILTER_TYPE=".length());
+
+        pat = Pattern.compile("BAG_TYPE=[a-z|A-Z|0-9|-]+(.[a-z|A-Z|0-9|-]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        String bagType = matcher.group().substring("BAG_TYPE=".length());
+
+        pat = Pattern.compile("WAND_TYPE=[a-z|A-Z|0-9|-]+(.[a-z|A-Z|0-9|-]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        String wandType = matcher.group().substring("WAND_TYPE=".length());
+
+        appliance = new VacuumCleaner(powerConsumption, motorSpeedRegulation, cleaningWidth, filterType, bagType, wandType);
+
+        return appliance;
     }
 
     @Override

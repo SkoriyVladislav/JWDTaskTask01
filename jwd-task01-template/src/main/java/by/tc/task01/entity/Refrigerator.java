@@ -1,5 +1,8 @@
 package by.tc.task01.entity;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Refrigerator extends Appliance{
 	// you may add your own code here
     private double powerConsumption, weight, freezerCapacity, overallCapacity, height, width;
@@ -15,6 +18,44 @@ public class Refrigerator extends Appliance{
         this.overallCapacity = overallCapacity;
         this.height = height;
         this.width = width;
+    }
+
+    public static Appliance create(String line) {
+        Appliance appliance;
+
+        Pattern pat = Pattern.compile("POWER_CONSUMPTION=[0-9]+(.[0-9]+)?");
+        Matcher matcher = pat.matcher(line);
+        matcher.find();
+        double  powerConsumption = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("WEIGHT=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double weight = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("FREEZER_CAPACITY=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double freezerCapacity = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("OVERALL_CAPACITY=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double overallCapacity = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("HEIGHT=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double height = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        pat = Pattern.compile("WIDTH=[0-9]+(.[0-9]+)?");
+        matcher = pat.matcher(line);
+        matcher.find();
+        double width = Double.valueOf(matcher.group().replaceAll("([a-z]|[A-Z]|=|_)", " ").trim());
+
+        appliance = new Refrigerator(powerConsumption, weight, freezerCapacity, overallCapacity, height, width);
+
+        return appliance;
     }
 
     @Override
