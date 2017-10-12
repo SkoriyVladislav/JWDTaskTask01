@@ -60,9 +60,13 @@ public class ApplianceDAOImpl implements ApplianceDAO{
 		}
 		catch (UnsupportedEncodingException | FileNotFoundException ex) {
 			System.out.println("Cannot open the file appliances_db.txt");
+			ex.printStackTrace();
+			System.exit(0);
 		}
 		catch (IOException ex) {
 			System.out.println("Cannot open the file appliances_db.txt");
+			ex.printStackTrace();
+			System.exit(0);
 		}
 
 
