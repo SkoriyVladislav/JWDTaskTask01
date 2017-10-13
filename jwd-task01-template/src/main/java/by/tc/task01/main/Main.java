@@ -62,6 +62,8 @@ public class Main {
 
 		//////////////////////////////////////////////////////////////////
 
+		// Я сделал так что критерий для поиска по FREQUENCY_RANGE - число.
+
 		Criteria<Speakers> criteriaSpeakers = new Criteria<Speakers>();
 		criteriaSpeakers.setApplianceType("Speakers");
 		criteriaSpeakers.add(Speakers.FREQUENCY_RANGE, 3);
